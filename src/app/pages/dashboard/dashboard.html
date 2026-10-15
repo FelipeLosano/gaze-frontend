@@ -1,0 +1,12 @@
+<div style="padding: 2rem">
+  <h1>Dashboard</h1>
+
+  @if (me(); as user) {
+    <p>Logged in as <strong>{{ user.email }}</strong></p>
+    <p>Roles: {{ user.roles.join(', ') }}</p>
+  } @else {
+    <p>Loading...</p>
+  }
+
+  <button (click)="logout()">Log out</button>
+</div>
