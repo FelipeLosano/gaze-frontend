@@ -1,0 +1,49 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.container {
+  min-height: 100vh;
+  @include m.flex-center;
+  background: v.$color-bg;
+}
+
+.card {
+  width: 100%;
+  max-width: 360px;
+  padding: v.$space-3;
+  background: v.$color-surface;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-1;
+
+  h1 {
+    margin: 0 0 v.$space-2;
+  }
+
+  input {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: v.$radius;
+  }
+
+  button {
+    margin-top: v.$space-2;
+    padding: 0.7rem;
+    border: 0;
+    border-radius: v.$radius;
+    background: v.$color-primary;
+    color: white;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.field-error,
+.error {
+  color: v.$color-danger;
+}

@@ -1,0 +1,24 @@
+<div calss="container">
+  <form [formGroup]="form" (ngSubmit)="submit()" class="card">
+    <h1>Sign up</h1>
+
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="email" autocomplete="email" />
+    @if (form.controls.email.touched && form.controls.email.invalid) {
+    <small class="field-error">Enter a valid email.</small>
+    }
+
+    <label for="password">Password</label>
+    <input id="password" type="password" formControlName="password" autocomplete="new-password" />
+    @if (form.controls.password.touched && form.controls.password.invalid) {
+    <small class="field-error">Password is required.</small>
+    }
+    @if (errorMessage(); as message) {
+    <p class="error" role="alert">{{ message }}</p>
+    }
+    <button type="submit" [disabled]="loading()">
+      {{ loading() ? 'Signing up...' : 'Sign up' }}
+    </button>
+
+  </form>
+</div>

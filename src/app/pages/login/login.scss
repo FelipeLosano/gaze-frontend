@@ -47,3 +47,18 @@
 .error {
   color: v.$color-danger;
 }
+
+.register-link {
+  margin-top: v.$space-2;
+  text-align: center;
+
+  a {
+    color: v.$color-primary;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}
