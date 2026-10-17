@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../auth/auth';
 import { AvatarComponent } from '../../components/avatar/avatar';
@@ -14,6 +14,7 @@ interface Me {
   selector: 'app-dashboard',
   imports: [AvatarComponent],
   templateUrl: './dashboard.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './dashboard.scss',
 })
 export class Dashboard {

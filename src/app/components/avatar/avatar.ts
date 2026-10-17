@@ -1,9 +1,10 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { Component, inject, input, signal, ChangeDetectionStrategy } from '@angular/core';
 import { AvatarService } from '../../services/avatar';
 
 @Component({
   selector: 'app-avatar',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <img [src]="avatarSrc()" alt="Avatar" width="96" height="96" (error)="onImageError()" />
 
