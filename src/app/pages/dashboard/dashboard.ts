@@ -1,15 +1,18 @@
 import { Component, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../auth/auth';
+import { AvatarComponent } from '../../components/avatar/avatar';
 
 interface Me {
+  id: string;
+  username: string;
   email: string;
   roles: string[];
 }
 
 @Component({
   selector: 'app-dashboard',
-  imports: [],
+  imports: [AvatarComponent],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })

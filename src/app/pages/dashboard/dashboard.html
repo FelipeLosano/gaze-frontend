@@ -1,11 +1,15 @@
-<div style="padding: 2rem">
+<div class="container">
   <h1>Dashboard</h1>
 
   @if (me(); as user) {
-    <p>Logged in as <strong>{{ user.email }}</strong></p>
-    <p>Roles: {{ user.roles.join(', ') }}</p>
+  <p>ID: {{ user.id }}</p>
+  <p>Username: {{ user.username }}</p>
+  <p>Logged in as <strong>{{ user.email }}</strong></p>
+  <p>Roles: {{ user.roles }}</p>
+  <img [src]="'api/users/' + user.id + '/avatar'" alt="User Avatar" width="96" height="96" />
+  <app-avatar [userId]="user.id"/>
   } @else {
-    <p>Loading...</p>
+  <p>Loading...</p>
   }
 
   <button (click)="logout()">Log out</button>

@@ -1,0 +1,31 @@
+<mat-toolbar class="navbar">
+  <span class="toolbar-title"><a routerLink="/home">GAZE</a></span>
+  <span class="spacer"></span>
+
+  @if (isAuthenticated() === true) {
+  <div class="user-menu-container">
+    <a mat-button class="user-link" href="#" [attr.aria-expanded]="userMenuOpen()" aria-haspopup="true"
+      (click)="toggleUserMenu($event)">
+      <span class="user-info">
+        @if (me(); as user) {
+        <img [src]="'api/users/' + user.id + '/avatar'" alt="User Avatar" class="avatar" />
+        <span class="username">{{user.username}}</span>
+        }
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+          <path d="M480-360 280-560h400L480-360Z" />
+        </svg>
+      </span>
+    </a>
+    @if (userMenuOpen()) {
+    <div class="user-menu" role="menu">
+      <a routerLink="/dashboard" role="menuitem" (click)="closeUserMenu()">Profile</a>
+      <a routerLink="/settings" role="menuitem" (click)="closeUserMenu()">Settings</a>
+      <a role="menuitem" (click)="logout(); closeUserMenu()">Logout</a>
+    </div>
+    }
+  </div>
+  } @else if (path() !== '/login') {
+  <a mat-button routerLink="/login" class="login-link">Login</a>
+  }
+
+</mat-toolbar>

@@ -1,0 +1,10 @@
+@use '../../../styles/variables' as v;
+
+.container {
+  background-color: v.$color-background;
+  color: v.$color-primary;
+
+  h1 {
+    margin: 0px;
+  }
+}

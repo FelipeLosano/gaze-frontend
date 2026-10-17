@@ -1,0 +1,104 @@
+@use '../../../styles/variables' as v;
+@use '@angular/material' as mat;
+@import url('https://fonts.googleapis.com/css2?family=Isometra&display=swap');
+
+.navbar {
+  .toolbar-title {
+    font-family: 'Isometra', sans-serif;
+    font-size: 32px;
+  }
+  padding: 0 v.$space-3;
+  height: 70px;
+  background-color: v.$color-dark;
+  color: v.$color-primary;
+  border-bottom: 2px solid v.$color-border;
+
+  .toolbar-title {
+    a {
+      font-size: 32px;
+      text-decoration: none;
+      color: v.$color-primary;
+    }
+  }
+  .user-link {
+    color: v.$color-primary;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: v.$color-secondary;
+    border-radius: 3px;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .user-menu-container {
+    position: relative;
+  }
+
+  .user-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    z-index: 1000;
+    width: 180px;
+    padding: 0.5rem 0;
+    background-color: v.$color-dark;
+    border: 1px solid v.$color-border;
+    border-radius: 3px;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 30%);
+    overflow: hidden;
+
+    a,
+    button {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.65rem 1rem;
+      border: 0;
+      background: transparent;
+      color: v.$color-primary;
+      font-size: 0.9rem;
+      text-align: left;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    a:hover,
+    button:hover {
+      background-color: v.$color-secondary;
+    }
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 100%;
+  }
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    box-shadow: 0 0 0 1px v.$color-light;
+  }
+
+  .username {
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  .login-link {
+    color: v.$color-primary;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .login-link:hover {
+    background-color: v.$color-secondary;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+  }
+}

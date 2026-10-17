@@ -4,14 +4,14 @@
 .container {
   min-height: 100vh;
   @include m.flex-center;
-  background: v.$color-bg;
+  background: v.$color-background;
 }
 
 .card {
   width: 100%;
   max-width: 360px;
   padding: v.$space-3;
-  background: v.$color-surface;
+  background: v.$color-dark;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
