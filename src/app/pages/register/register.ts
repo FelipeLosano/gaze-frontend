@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms'
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth';
 
@@ -15,6 +15,7 @@ export class Register {
   private router = inject(Router);
 
   form = this.fb.nonNullable.group({
+    username: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
   });
@@ -28,20 +29,22 @@ export class Register {
       return;
     }
 
-    this.loading.set(true)
+    this.loading.set(true);
     this.errorMessage.set(null);
 
-    const { email, password } = this.form.getRawValue();
+    const { username, email, password } = this.form.getRawValue();
 
-    this.auth.register(email, password).subscribe({
+    this.auth.register(username, email, password).subscribe({
       next: () => this.router.navigateByUrl('/dashboard'),
       error: (err) => {
         this.loading.set(false);
-        this.errorMessage.set(
-          err.status === 400
-            ? 'Email already exists.'
-            : 'Something went wrong. Please try again.',
-        );
+        if (err.status === 400 && err.error?.message === 'Email already exists') {
+          this.form.get('email')?.setErrors({ emailExists: true });
+        }
+        if (err.status === 400 && err.error?.message === 'Username already exists') {
+          this.form.get('username')?.setErrors({ usernameExists: true });
+        }
+        this.errorMessage.set('Something went wrong. Please try again.');
       },
     });
   }

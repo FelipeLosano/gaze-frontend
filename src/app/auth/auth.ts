@@ -35,8 +35,8 @@ export class AuthService {
     );
   }
 
-  register(email: string, password: string) {
-    return this.http.post<TokenResponse>('/api/auth/register', { email, password }).pipe(
+  register(username: string, email: string, password: string) {
+    return this.http.post<TokenResponse>('/api/auth/register', { username, email, password }).pipe(
       tap((res) => {
         localStorage.setItem(TOKEN_KEY, res.accessToken);
         this.tokenSignal.set(res.accessToken);
